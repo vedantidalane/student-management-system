@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Student Management System - Responsive Stylesheet (responsive.css)
+   Author: Vedanti (Frontend Developer)
+   Target: Mobile, Tablet & Desktop Responsive Layouts
+   ========================================================================== */
+
+/* Tablet & Mobile Screens (<= 991.98px) */
+@media (max-width: 991.98px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+
+  .page-header .header-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .stat-card {
+    margin-bottom: 1rem;
+  }
+
+  .search-box-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Mobile Screens (<= 767.98px) */
+@media (max-width: 767.98px) {
+  .page-title {
+    font-size: 1.35rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .custom-card .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .custom-table th,
+  .custom-table td {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .toast-container-custom {
+    left: 1rem;
+    right: 1rem;
+    top: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+
+  .btn-action-group {
+    display: flex;
+  }
+}
+
+/* Small Devices (<= 575.98px) */
+@media (max-width: 575.98px) {
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .custom-navbar .navbar-brand {
+    font-size: 1.05rem;
+  }
+}

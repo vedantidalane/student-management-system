@@ -1,0 +1,219 @@
+{
+  "info": {
+    "_postman_id": "c1f7a3e2-8921-4f51-9e28-7612f08a9012",
+    "name": "Student Management System API",
+    "description": "Collection of all 8 Spring Boot REST APIs for the Student Management System project.\nDevelopers: Vedanti (Frontend) & Seshadri (Backend).\nBase URL: http://localhost:8080/api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api",
+      "type": "string"
+    },
+    {
+      "key": "studentId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "courseId",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "1. Create Course (POST /api/courses)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseName\": \"Java Full Stack Development\",\n  \"courseCode\": \"JFS101\",\n  \"duration\": \"6 Months\",\n  \"description\": \"Core Java, Spring Boot, MySQL, and Modern Web Frontend.\",\n  \"status\": \"Active\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/courses",
+              "host": ["{{baseUrl}}"],
+              "path": ["courses"]
+            },
+            "description": "Create a new course in the system. Returns HTTP 201 Created."
+          },
+          "response": []
+        },
+        {
+          "name": "2. Get All Courses (GET /api/courses)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/courses",
+              "host": ["{{baseUrl}}"],
+              "path": ["courses"]
+            },
+            "description": "Retrieve all active and inactive courses. Used by student registration form to populate dropdown."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "3. Create Student (POST /api/students)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Rahul Patil\",\n  \"email\": \"rahul.patil@example.com\",\n  \"mobileNumber\": \"9876543210\",\n  \"gender\": \"Male\",\n  \"dateOfBirth\": \"2003-05-15\",\n  \"address\": \"Pune, Maharashtra\",\n  \"enrollmentDate\": \"2026-11-25\",\n  \"status\": \"Active\",\n  \"courseId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/students",
+              "host": ["{{baseUrl}}"],
+              "path": ["students"]
+            },
+            "description": "Register a new student assigned to an existing courseId. Returns HTTP 201 Created."
+          },
+          "response": []
+        },
+        {
+          "name": "4. Get All Students (GET /api/students)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/students",
+              "host": ["{{baseUrl}}"],
+              "path": ["students"]
+            },
+            "description": "Retrieve all student records from the database. Returns HTTP 200 OK."
+          },
+          "response": []
+        },
+        {
+          "name": "5. Get Student by ID (GET /api/students/{id})",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/students/{{studentId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "{{studentId}}"]
+            },
+            "description": "Fetch a single student record by their primary key. Returns HTTP 200 OK or 404 Not Found."
+          },
+          "response": []
+        },
+        {
+          "name": "6. Update Student (PUT /api/students/{id})",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Rahul A. Patil\",\n  \"email\": \"rahul.patil@example.com\",\n  \"mobileNumber\": \"9876543210\",\n  \"gender\": \"Male\",\n  \"dateOfBirth\": \"2003-05-15\",\n  \"address\": \"Pune (Shivaji Nagar), Maharashtra\",\n  \"enrollmentDate\": \"2026-11-25\",\n  \"status\": \"Active\",\n  \"courseId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/students/{{studentId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "{{studentId}}"]
+            },
+            "description": "Update all editable fields of an existing student. Returns HTTP 200 OK."
+          },
+          "response": []
+        },
+        {
+          "name": "7. Search Students by Name (GET /api/students/search)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/students/search?name=Rahul",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "search"],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Rahul"
+                }
+              ]
+            },
+            "description": "Case-insensitive substring search across student full names. Returns HTTP 200 OK."
+          },
+          "response": []
+        },
+        {
+          "name": "8. Delete Student (DELETE /api/students/{id})",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/students/{{studentId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "{{studentId}}"]
+            },
+            "description": "Deletes a student record permanently from MySQL. Returns HTTP 204 No Content with no body."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
